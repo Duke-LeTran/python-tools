@@ -1,3 +1,21 @@
+"""
+This provides a user timer decorator for ETL process functions.
+
+Duke LeTran <duke.letran@gmail.com>
+"""
+
+import logging
+import functools
+import time
+
+log = logging.getLogger(__name__)
+
+def convert_time(time_elapsed) -> tuple:
+    hrs = time_elapsed // 3600
+    mins = (time_elapsed % 3600) // 60
+    secs = (time_elapsed % 3600) % 60
+    return hrs, mins, secs
+    
 def timer(func):
     """
      Decorator Practice - Prints the runtime of the decorated function

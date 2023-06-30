@@ -1,8 +1,22 @@
+import logging
+import pandas as pd
+from io import StringIO
+
+log = logging.getLogger(__name__)
+
+def logger_df_info(df_input:pd.DataFrame, msg:str=None):
+    """ logs df.info() """
+    name_df = [ k for k,v in locals().items() if v is df_input][0] # gets var name
+    log.info(f"{name_df}.info() " +  msg) # prints message df.info() + msg
+    buffer = StringIO() # creates stringIO buffer
+    df_input.info(buf=buffer) # writes to buffer (rather than console)
+    log.info(buffer.getvalue()) # send buffer to logger
+
+
 import sys
 import logging
 import traceback
 
-log = logging.getLogger(__name__)
 
 def logging_traceback():
     try:
