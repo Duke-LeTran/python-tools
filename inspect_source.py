@@ -35,3 +35,16 @@ folder_path = '/path/to/folder'
 
 # Open the folder
 open_folder(folder_path)
+
+
+def inspect_function():
+    import inspect
+
+    def my_function(arg1, arg2, *args, **kwargs):
+        pass
+
+    # Get the function signature
+    signature = inspect.signature(my_function)
+
+    # Get the parameters of the function
+    parameters = signature.parameters
