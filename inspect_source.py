@@ -2,18 +2,17 @@ import subprocess
 import os
 import pandas as pd
 
-# Get the path of the pandas module
-pandas_path = os.path.dirname(pd.core.frame.__file__)
+def open_module_directory():
+    # Get the path of the pandas module
+    pandas_path = os.path.dirname(pd.core.frame.__file__)
+    # Open the folder in File Explorer
+    subprocess.run(['explorer', pandas_path])
 
-# Open the folder in File Explorer
-subprocess.run(['explorer', pandas_path])
-
-##################################
-# For more than operating system
-##################################
-import platform
 
 def open_folder(folder_path):
+    """works on more than one operating system"""
+    import platform
+
     # Get the platform (e.g., 'Windows', 'Linux', 'Darwin')
     operating_system = platform.system()
 
@@ -30,14 +29,9 @@ def open_folder(folder_path):
     else:
         print('Opening folders is not supported on this platform.')
 
-# Specify the folder path you want to open
-folder_path = '/path/to/folder'
-
-# Open the folder
-open_folder(folder_path)
-
 
 def inspect_function():
+    """ This is how you can inspect a function for its parameters"""
     import inspect
 
     def my_function(arg1, arg2, *args, **kwargs):

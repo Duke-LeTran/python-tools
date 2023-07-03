@@ -1,3 +1,6 @@
+import logging
+
+
 def SP_Oracle(SP_name, msg='Stored Procedure', input_val=None, cursor=None):
     """
     INPUT 
@@ -20,3 +23,8 @@ def SP_Oracle(SP_name, msg='Stored Procedure', input_val=None, cursor=None):
     end_time = time.time() - start_time
     logger.info(str(out_val.getvalue())) 
     logger.info(f"{msg} COMPLETED IN {end_time/60} min(s).")
+
+
+def ls2str(ls_iamids) -> str:
+    """converts a python list to a SQL list as a string for query statement"""
+    return ', '.join(["'"+x+"'" for x in ls_iamids])
