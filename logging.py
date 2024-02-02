@@ -12,11 +12,17 @@ def logger_df_info(df_input:pd.DataFrame, msg:str=None):
     df_input.info(buf=buffer) # writes to buffer (rather than console)
     log.info(buffer.getvalue()) # send buffer to logger
 
+def log_df_itself(df_input):
+    """ converts dataframe to text, makes it logable as string"""
+    df_result = df_input.copy()
+    log.info(' name of df '.center(80,'-'))
+    text_df = '\n\t'+ df_result.to_string().replace('\n', '\n\t')
+    log.info(' end '.center(80,'-'))
+
 
 import sys
 import logging
 import traceback
-
 
 def logging_traceback():
     try:
